@@ -15,3 +15,75 @@ body {
   object-fit: cover;   /* fills screen without distortion */
   display: block;
 }
+
+.popup {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 90ms ease;
+}
+
+.popup.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Glass container */
+.container {
+  width: 250px;
+  height: 300px;
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.175); /* REQUIRED */
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+
+  opacity: 0; /* 👈 fade this */
+  transform: scale(0.95);
+
+  transition:
+    opacity 3s ease,
+    transform 3s ease;
+}
+
+/* When popup is shown */
+.popup.show .container {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.poster{
+  width: 50%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.poster.shake {
+  transform: scale(1.05); /* small pop effect */
+}
+
+.buttonEnter{
+  height: 30px;
+  width: 90px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(45deg, purple, #ffb6b6);
+
+  margin-top: 8px;
+
+  font-weight: 800;
+}
+
